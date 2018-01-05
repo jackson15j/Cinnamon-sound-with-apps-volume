@@ -8,7 +8,7 @@ const Clutter = imports.gi.Clutter;
 const St = imports.gi.St;
 const PopupMenu = imports.ui.popupMenu;
 const GLib = imports.gi.GLib;
-const Gvc = imports.gi.Gvc;
+const Cvc = imports.gi.Cvc;
 const Pango = imports.gi.Pango;
 const Tooltips = imports.ui.tooltips;
 const Main = imports.ui.main;
@@ -1205,7 +1205,7 @@ MyApplet.prototype = {
                ));
             }));
 
-            this._control = new Gvc.MixerControl({ name: 'Cinnamon Volume Control' });
+            this._control = new Cvc.MixerControl({ name: 'Cinnamon Volume Control' });
             this._control.connect('state-changed', Lang.bind(this, this._onControlStateChanged));
             this._control.connect('card-added', Lang.bind(this, this._onControlStateChanged));
             this._control.connect('card-removed', Lang.bind(this, this._onControlStateChanged));
@@ -1829,7 +1829,7 @@ MyApplet.prototype = {
     },
 
     _onControlStateChanged: function() {
-        if (this._control.get_state() == Gvc.MixerControlState.READY) {
+        if (this._control.get_state() == Cvc.MixerControlState.READY) {
             this._readOutput();
             this._readInput();
             this.actor.show();
